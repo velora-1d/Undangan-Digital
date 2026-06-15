@@ -13,9 +13,7 @@ export const MAX_GUESTS = parseInt(
   10
 );
 
-export const MUSIC_URL =
-  import.meta.env.PUBLIC_MUSIC_URL ??
-  "https://www.bensound.com/bensound-music/bensound-love.mp3";
+export const MUSIC_URL = "/assets/music.mp3";
 
 export const WEDDING_TEXT = {
   // 1. Salam Pembuka (Hero / Profile)
