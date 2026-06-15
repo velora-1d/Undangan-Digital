@@ -3,12 +3,11 @@ import db from "../../lib/db";
 
 export const GET: APIRoute = async () => {
   try {
-    const stmt = db.prepare(`
+    const data = (await db.query(`
       SELECT guest_name, phone, attendance, guest_count, message, created_at 
       FROM rsvps 
       ORDER BY created_at DESC
-    `);
-    const data = stmt.all() as any[];
+    `)) as any[];
     const csvRows = [];
     const headers = [
       "Nama Tamu",

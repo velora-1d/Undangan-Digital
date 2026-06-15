@@ -1,8 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import App from "../App";
+import { WEDDING_CONFIG } from "../constants";
+
+const title = `The Wedding of ${WEDDING_CONFIG.couple.bride.name} & ${WEDDING_CONFIG.couple.groom.name}`;
 ---
 
-<Layout title="The Wedding of Fera & Yahya">
+<Layout title={title}>
   <App client:only="react" />
 </Layout>

@@ -15,8 +15,7 @@ const sanitize = (str: string) => {
 
 export const GET: APIRoute = async () => {
   try {
-    const stmt = db.prepare("SELECT * FROM wishes ORDER BY created_at DESC");
-    const wishes = stmt.all();
+    const wishes = await db.query("SELECT * FROM wishes ORDER BY created_at DESC");
     return new Response(JSON.stringify(wishes), {
       status: 200,
       headers: { "Content-Type": "application/json" },
@@ -44,30 +43,36 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     const name = sanitize(rawData.name);
     const message = sanitize(rawData.message);
 
-    const checkStmt = db.prepare("SELECT id FROM wishes WHERE name = ?");
-    const existingWish = checkStmt.get(name) as { id: number } | undefined;
+    const existingWish = (await db.queryOne(
+      "SELECT id FROM wishes WHERE name = ?",
+      [name]
+    )) as { id: number } | undefined;
 
     let actionType = "";
     let resultId = 0;
 
     if (existingWish) {
       // UPDATE
-      const updateStmt = db.prepare(`
+      await db.execute(
+        `
         UPDATE wishes 
         SET message = ?, created_at = ?
         WHERE id = ?
-      `);
-      updateStmt.run(message, new Date().toISOString(), existingWish.id);
+      `,
+        [message, new Date().toISOString(), existingWish.id]
+      );
       actionType = "updated";
       resultId = existingWish.id;
     } else {
       // INSERT
-      const insertStmt = db.prepare(
-        "INSERT INTO wishes (name, message, created_at) VALUES (?, ?, ?)"
+      const result = await db.execute(
+        "INSERT INTO wishes (name, message, created_at) VALUES (?, ?, ?)",
+        [name, message, new Date().toISOString()]
       );
-      const result = insertStmt.run(name, message, new Date().toISOString());
       actionType = "created";
-      resultId = Number(result.lastInsertRowid);
+      resultId = (result as any)?.lastInsertRowid
+        ? Number((result as any).lastInsertRowid)
+        : 0;
     }
 
     // --- LOGIC NOTIFIKASI TELEGRAM ---

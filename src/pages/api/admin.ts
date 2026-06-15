@@ -25,15 +25,17 @@ export const POST: APIRoute = async ({ request, cookies }) => {
     // --- RSVP ACTIONS ---
     if (action === "update_rsvp") {
       const { guest_name, attendance, guest_count, message } = data;
-      db.prepare(
-        "UPDATE rsvps SET guest_name=?, attendance=?, guest_count=?, message=? WHERE id=?"
-      ).run(guest_name, attendance, guest_count, message, id);
+      await db.execute(
+        "UPDATE rsvps SET guest_name=?, attendance=?, guest_count=?, message=? WHERE id=?",
+        [guest_name, attendance, guest_count, message, id]
+      );
       return new Response(JSON.stringify({ success: true }));
     }
 
     if (action === "delete_rsvp") {
-      db.prepare(`DELETE FROM rsvps WHERE id IN (${placeholders})`).run(
-        ...targetIds
+      await db.execute(
+        `DELETE FROM rsvps WHERE id IN (${placeholders})`,
+        targetIds
       );
       return new Response(JSON.stringify({ success: true }));
     }
@@ -41,17 +43,18 @@ export const POST: APIRoute = async ({ request, cookies }) => {
     // --- WISHES ACTIONS ---
     if (action === "update_wish") {
       const { name, message } = data;
-      db.prepare("UPDATE wishes SET name=?, message=? WHERE id=?").run(
+      await db.execute("UPDATE wishes SET name=?, message=? WHERE id=?", [
         name,
         message,
-        id
-      );
+        id,
+      ]);
       return new Response(JSON.stringify({ success: true }));
     }
 
     if (action === "delete_wish") {
-      db.prepare(`DELETE FROM wishes WHERE id IN (${placeholders})`).run(
-        ...targetIds
+      await db.execute(
+        `DELETE FROM wishes WHERE id IN (${placeholders})`,
+        targetIds
       );
       return new Response(JSON.stringify({ success: true }));
     }

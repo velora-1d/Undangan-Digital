@@ -3,12 +3,11 @@ import db from "../../lib/db";
 
 export const GET: APIRoute = async () => {
   try {
-    const stmt = db.prepare(`
+    const data = (await db.query(`
       SELECT name, message, created_at 
       FROM wishes 
       ORDER BY created_at DESC
-    `);
-    const data = stmt.all() as {
+    `)) as {
       name: string;
       message: string;
       created_at: string;

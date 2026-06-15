@@ -40,7 +40,7 @@ export const WEDDING_TEXT = {
     text: "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kami.",
     salam: "Wassalamu’alaikum Warahmatullahi Wabarakatuh",
     signature: "Kami yang berbahagia,",
-    family: "Kel. Bpk [Ayah Pria] & Kel. Bpk [Ayah Wanita]",
+    family: "Kel. Bpk Ayat & Kel. Bpk Endang Cahya",
   },
 
   // 5. Disclaimer Kado (Halus & Sopan)
@@ -53,67 +53,51 @@ export const WEDDING_TEXT = {
 export const WEDDING_CONFIG: WeddingConfig = {
   couple: {
     bride: {
-      name: import.meta.env.PUBLIC_BRIDE_NICKNAME ?? "Fey",
-      fullName: import.meta.env.PUBLIC_BRIDE_FULLNAME ?? "Fera Oktapia",
-      parents:
-        import.meta.env.PUBLIC_BRIDE_PARENTS ??
-        "Putri ke ... dari Bapak ... & Ibu ...",
-      instagram: import.meta.env.PUBLIC_BRIDE_INSTAGRAM ?? "feraoktapia___",
-      image:
-        import.meta.env.PUBLIC_BRIDE_IMAGE ??
-        "https://placehold.co/600x800?text=Fey+Portrait",
+      name: "Megisa",
+      fullName: "Megisa Ainun Fajriah",
+      parents: "Putri ke-1 dari Bpk. Endang Cahya & Ibu Imas Marliah",
+      instagram: "megisaaf_",
+      image: "https://placehold.co/600x800?text=Megisa+Portrait",
     },
     groom: {
-      name: import.meta.env.PUBLIC_GROOM_NICKNAME ?? "Yaya",
-      fullName: import.meta.env.PUBLIC_GROOM_FULLNAME ?? "Yahya Zulfikri",
-      parents:
-        import.meta.env.PUBLIC_GROOM_PARENTS ??
-        "Putra ke ... dari Bapak ... & Ibu ...",
-      instagram: import.meta.env.PUBLIC_GROOM_INSTAGRAM ?? "zulfikriyahya_",
-      image:
-        import.meta.env.PUBLIC_GROOM_IMAGE ??
-        "https://placehold.co/600x800?text=Yaya+Portrait",
+      name: "Farhan",
+      fullName: "Farhan Nasir",
+      parents: "Putra ke-3 dari Bpk. Ayat & Ibu Een Rohaenah",
+      instagram: "farhannasir_",
+      image: "https://placehold.co/600x800?text=Farhan+Portrait",
     },
   },
   venue: {
-    name: import.meta.env.PUBLIC_VENUE_NAME ?? "The Royal Azure Ballroom",
-    address: import.meta.env.PUBLIC_VENUE_ADDRESS ?? "Jl. Elok No. 77",
-    latitude: parseFloat(import.meta.env.PUBLIC_VENUE_LAT ?? "-6.2088"),
-    longitude: parseFloat(import.meta.env.PUBLIC_VENUE_LNG ?? "106.8456"),
+    name: "Lokasi Pernikahan",
+    address: "Kp. Tanjakan Panjang RT 013 RW 15 Desa Panundaan, Kec. Ciwidey, Kab. Bandung",
+    latitude: -7.0947,
+    longitude: 107.4475,
   },
   events: {
     akad: {
-      title: import.meta.env.PUBLIC_AKAD_TITLE ?? "Janji Suci",
-      day: import.meta.env.PUBLIC_AKAD_DAY ?? "Minggu",
-      date: import.meta.env.PUBLIC_AKAD_DATE ?? "11 Oktober 2025",
-      startTime: import.meta.env.PUBLIC_AKAD_START ?? "08:00",
-      endTime: import.meta.env.PUBLIC_AKAD_END ?? "10:00",
-      startDateTime: new Date(
-        import.meta.env.PUBLIC_AKAD_ISO_START ?? "2025-10-11T08:00:00+07:00"
-      ),
-      endDateTime: new Date(
-        import.meta.env.PUBLIC_AKAD_ISO_END ?? "2025-10-11T10:00:00+07:00"
-      ),
+      title: "Akad Nikah",
+      day: "Minggu",
+      date: "28 Juni 2026",
+      startTime: "08:00",
+      endTime: "10:00",
+      startDateTime: new Date("2026-06-28T08:00:00+07:00"),
+      endDateTime: new Date("2026-06-28T10:00:00+07:00"),
     },
     resepsi: {
-      title: import.meta.env.PUBLIC_RESEPSI_TITLE ?? "Perayaan Cinta",
-      day: import.meta.env.PUBLIC_RESEPSI_DAY ?? "Minggu",
-      date: import.meta.env.PUBLIC_RESEPSI_DATE ?? "11 Oktober 2025",
-      startTime: import.meta.env.PUBLIC_RESEPSI_START ?? "11:00",
-      endTime: import.meta.env.PUBLIC_RESEPSI_END ?? "14:00",
-      startDateTime: new Date(
-        import.meta.env.PUBLIC_RESEPSI_ISO_START ?? "2025-10-11T11:00:00+07:00"
-      ),
-      endDateTime: new Date(
-        import.meta.env.PUBLIC_RESEPSI_ISO_END ?? "2025-10-11T14:00:00+07:00"
-      ),
+      title: "Resepsi Pernikahan",
+      day: "Minggu",
+      date: "28 Juni 2026",
+      startTime: "11:00",
+      endTime: "14:00",
+      startDateTime: new Date("2026-06-28T11:00:00+07:00"),
+      endDateTime: new Date("2026-06-28T14:00:00+07:00"),
     },
   },
   hero: {
     image:
       import.meta.env.PUBLIC_HERO_IMAGE ??
       "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop",
-    city: import.meta.env.PUBLIC_HERO_CITY ?? "Pandeglang, Banten",
+    city: "Ciwidey, Kab. Bandung",
   },
 };
 
@@ -126,7 +110,8 @@ export const LOVE_STORY = parseJson(import.meta.env.PUBLIC_LOVE_STORY, [
 ]);
 
 export const BANK_ACCOUNTS = parseJson(import.meta.env.PUBLIC_BANK_ACCOUNTS, [
-  { bank: "Bank BCA", number: "1234567890", name: "Fera Oktapia" },
+  { bank: "Bank BCA", number: "6768288845", name: "Farhan Nasir" },
+  { bank: "Dana", number: "085169576637", name: "Megisa Ainun Fajriah" },
 ]);
 
 export const GALLERY_IMAGES = parseJson(import.meta.env.PUBLIC_GALLERY_IMAGES, [

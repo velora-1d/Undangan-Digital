@@ -35,8 +35,8 @@ let rsvps = [],
   stats = { total: 0, hadir: 0, ragu: 0, tidak: 0, guestCount: 0 };
 
 if (isAuthenticated) {
-  rsvps = db.prepare("SELECT * FROM rsvps ORDER BY created_at DESC").all();
-  wishes = db.prepare("SELECT * FROM wishes ORDER BY created_at DESC").all();
+  rsvps = await db.query("SELECT * FROM rsvps ORDER BY created_at DESC");
+  wishes = await db.query("SELECT * FROM wishes ORDER BY created_at DESC");
   stats.total = rsvps.length;
   stats.hadir = rsvps.filter((r: any) => r.attendance === "hadir").length;
   stats.ragu = rsvps.filter((r: any) => r.attendance === "ragu").length;

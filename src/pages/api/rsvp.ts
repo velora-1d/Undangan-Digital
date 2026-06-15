@@ -15,12 +15,11 @@ const sanitize = (str: string) => {
 
 export const GET: APIRoute = async () => {
   try {
-    const stmt = db.prepare(`
+    const rsvps = await db.query(`
       SELECT id, guest_name, attendance, guest_count, message, created_at 
       FROM rsvps 
       ORDER BY created_at DESC
     `);
-    const rsvps = stmt.all();
     return new Response(JSON.stringify(rsvps), {
       status: 200,
       headers: { "Content-Type": "application/json" },
@@ -54,47 +53,53 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     const guest_count = rawData.guest_count;
 
     // Cek Data Lama
-    const checkStmt = db.prepare("SELECT id FROM rsvps WHERE guest_name = ?");
-    const existingGuest = checkStmt.get(guest_name) as
-      | { id: number }
-      | undefined;
+    const existingGuest = (await db.queryOne(
+      "SELECT id FROM rsvps WHERE guest_name = ?",
+      [guest_name]
+    )) as { id: number } | undefined;
 
     let actionType = "";
     let resultId = 0;
 
     if (existingGuest) {
       // UPDATE
-      const updateStmt = db.prepare(`
+      await db.execute(
+        `
         UPDATE rsvps 
         SET phone = ?, attendance = ?, guest_count = ?, message = ?, created_at = ?
         WHERE id = ?
-      `);
-      updateStmt.run(
-        phone,
-        attendance,
-        guest_count,
-        message || "",
-        new Date().toISOString(),
-        existingGuest.id
+      `,
+        [
+          phone,
+          attendance,
+          guest_count,
+          message || "",
+          new Date().toISOString(),
+          existingGuest.id,
+        ]
       );
       actionType = "updated";
       resultId = existingGuest.id;
     } else {
       // INSERT
-      const insertStmt = db.prepare(`
+      const result = await db.execute(
+        `
         INSERT INTO rsvps (guest_name, phone, attendance, guest_count, message, created_at)
         VALUES (?, ?, ?, ?, ?, ?)
-      `);
-      const result = insertStmt.run(
-        guest_name,
-        phone,
-        attendance,
-        guest_count,
-        message || "",
-        new Date().toISOString()
+      `,
+        [
+          guest_name,
+          phone,
+          attendance,
+          guest_count,
+          message || "",
+          new Date().toISOString(),
+        ]
       );
       actionType = "created";
-      resultId = Number(result.lastInsertRowid);
+      resultId = (result as any)?.lastInsertRowid
+        ? Number((result as any).lastInsertRowid)
+        : 0;
     }
 
     // --- LOGIC NOTIFIKASI TELEGRAM ---

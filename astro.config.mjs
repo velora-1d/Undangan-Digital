@@ -55,9 +55,9 @@ export default defineConfig({
           ],
         },
         manifest: {
-          name: "The Wedding of Fera & Yahya",
-          short_name: "Fera & Yahya",
-          description: "Undangan Pernikahan Digital Fera & Yahya",
+          name: "Wedding Invitation",
+          short_name: "Wedding",
+          description: "Digital Wedding Invitation",
           theme_color: "#020617",
           background_color: "#020617",
           display: "standalone",

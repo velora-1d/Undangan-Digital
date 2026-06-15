@@ -22,6 +22,7 @@
     "@astrojs/node": "^9.5.1",
     "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.6.0",
+    "@neondatabase/serverless": "^1.1.0",
     "@tailwindcss/vite": "^4.1.18",
     "@types/file-saver": "^2.0.7",
     "@types/papaparse": "^5.5.2",
