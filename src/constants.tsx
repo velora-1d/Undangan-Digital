@@ -111,13 +111,13 @@ export const BANK_ACCOUNTS = parseJson(import.meta.env.PUBLIC_BANK_ACCOUNTS, [
 ]);
 
 export const GALLERY_IMAGES = [
-  "/assets/galeri1.webp",
-  "/assets/galeri2.webp",
-  "/assets/galeri3.webp",
-  "/assets/galeri4.webp",
-  "/assets/galeri5.webp",
-  "/assets/galeri6.webp",
-  "/assets/galeri7.webp",
-  "/assets/galeri8.webp",
-  "/assets/galeri9.webp",
+  "/assets/galeri1.jpg",
+  "/assets/galeri2.jpg",
+  "/assets/galeri3.jpg",
+  "/assets/galeri4.jpg",
+  "/assets/galeri5.jpg",
+  "/assets/galeri6.jpg",
+  "/assets/galeri7.jpg",
+  "/assets/galeri8.jpg",
+  "/assets/galeri9.jpg",
 ];

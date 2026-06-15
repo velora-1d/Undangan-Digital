@@ -4,6 +4,8 @@ let rsvpCache: { data: RSVP[]; timestamp: number } | null = null;
 let wishesCache: { data: Wish[]; timestamp: number } | null = null;
 
 const CACHE_DURATION = 30 * 1000;
+const RSVP_API_PATH = "/api/rsvp/";
+const WISHES_API_PATH = "/api/wishes/";
 
 export const dbService = {
   async initializeDemo() {},
@@ -16,7 +18,7 @@ export const dbService = {
     }
 
     try {
-      const response = await fetch("/api/rsvp");
+      const response = await fetch(RSVP_API_PATH);
       if (!response.ok) throw new Error("Failed to fetch RSVPs");
       const data = await response.json();
 
@@ -31,7 +33,7 @@ export const dbService = {
   async saveRSVP(data: Omit<RSVP, "id" | "created_at">): Promise<RSVP> {
     rsvpCache = null;
 
-    const response = await fetch("/api/rsvp", {
+    const response = await fetch(RSVP_API_PATH, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -51,7 +53,7 @@ export const dbService = {
     }
 
     try {
-      const response = await fetch("/api/wishes");
+      const response = await fetch(WISHES_API_PATH);
       if (!response.ok) throw new Error("Failed to fetch wishes");
       const data = await response.json();
       wishesCache = { data, timestamp: now };
@@ -64,7 +66,7 @@ export const dbService = {
 
   async saveWish(data: { name: string; message: string }): Promise<Wish> {
     wishesCache = null;
-    const response = await fetch("/api/wishes", {
+    const response = await fetch(WISHES_API_PATH, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
