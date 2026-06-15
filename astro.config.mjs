@@ -6,9 +6,10 @@ import sitemap from "@astrojs/sitemap";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
-  site: "https://undangan.ve-lora.my.id",
+  // Hapus site agar Vercel mendeteksi domain secara otomatis
   integrations: [react(), sitemap()],
   output: "server",
+  trailingSlash: "always",
   adapter: vercel(),
   vite: {
     plugins: [
