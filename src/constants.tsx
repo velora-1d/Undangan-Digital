@@ -57,14 +57,14 @@ export const WEDDING_CONFIG: WeddingConfig = {
       fullName: "Megisa Ainun Fajriah",
       parents: "Putri ke-1 dari Bpk. Endang Cahya & Ibu Imas Marliah",
       instagram: "megisaaf_",
-      image: "/assets/Foto Profil Mempelai Wanita (Megisa).webp",
+      image: "/assets/megisa.webp",
     },
     groom: {
       name: "Farhan",
       fullName: "Farhan Nasir",
       parents: "Putra ke-3 dari Bpk. Ayat & Ibu Een Rohaenah",
       instagram: "farhannasir_",
-      image: "/assets/Foto Profil Mempelai Pria (Farhan).webp",
+      image: "/assets/farhan.webp",
     },
   },
   venue: {
@@ -94,7 +94,7 @@ export const WEDDING_CONFIG: WeddingConfig = {
     },
   },
   hero: {
-    image: "/assets/hero image.webp",
+    image: "/assets/hero.webp",
     city: "Ciwidey, Kab. Bandung",
   },
 };
@@ -113,13 +113,13 @@ export const BANK_ACCOUNTS = parseJson(import.meta.env.PUBLIC_BANK_ACCOUNTS, [
 ]);
 
 export const GALLERY_IMAGES = [
-  "/assets/foto 1 galeri.webp",
-  "/assets/foto 2 galery.webp",
-  "/assets/foto 3 galery.webp",
-  "/assets/foto 4 galery.webp",
-  "/assets/foto 5 galery.webp",
-  "/assets/foto 6 galery.webp",
-  "/assets/foto 7 galery.webp",
-  "/assets/foto 8 galery.webp",
-  "/assets/foto 9 galery.webp",
+  "/assets/galeri1.webp",
+  "/assets/galeri2.webp",
+  "/assets/galeri3.webp",
+  "/assets/galeri4.webp",
+  "/assets/galeri5.webp",
+  "/assets/galeri6.webp",
+  "/assets/galeri7.webp",
+  "/assets/galeri8.webp",
+  "/assets/galeri9.webp",
 ];
