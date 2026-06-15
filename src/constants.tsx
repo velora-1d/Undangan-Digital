@@ -57,14 +57,14 @@ export const WEDDING_CONFIG: WeddingConfig = {
       fullName: "Megisa Ainun Fajriah",
       parents: "Putri ke-1 dari Bpk. Endang Cahya & Ibu Imas Marliah",
       instagram: "megisaaf_",
-      image: "https://placehold.co/600x800?text=Megisa+Portrait",
+      image: "/assets/Foto Profil Mempelai Wanita (Megisa).webp",
     },
     groom: {
       name: "Farhan",
       fullName: "Farhan Nasir",
       parents: "Putra ke-3 dari Bpk. Ayat & Ibu Een Rohaenah",
       instagram: "farhannasir_",
-      image: "https://placehold.co/600x800?text=Farhan+Portrait",
+      image: "/assets/Foto Profil Mempelai Pria (Farhan).webp",
     },
   },
   venue: {
@@ -94,18 +94,16 @@ export const WEDDING_CONFIG: WeddingConfig = {
     },
   },
   hero: {
-    image:
-      import.meta.env.PUBLIC_HERO_IMAGE ??
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop",
+    image: "/assets/hero image.webp",
     city: "Ciwidey, Kab. Bandung",
   },
 };
 
 export const LOVE_STORY = parseJson(import.meta.env.PUBLIC_LOVE_STORY, [
   {
-    date: "Musim Gugur, 2020",
-    title: "Pertemuan Pertama",
-    desc: "Berawal dari sebuah diskusi kecil...",
+    date: "Awal Pertemuan",
+    title: "Pertama Bertemu",
+    desc: "Momen istimewa saat kami pertama kali dipertemukan.",
   },
 ]);
 
@@ -114,7 +112,14 @@ export const BANK_ACCOUNTS = parseJson(import.meta.env.PUBLIC_BANK_ACCOUNTS, [
   { bank: "Dana", number: "085169576637", name: "Megisa Ainun Fajriah" },
 ]);
 
-export const GALLERY_IMAGES = parseJson(import.meta.env.PUBLIC_GALLERY_IMAGES, [
-  "https://placehold.co/800x1200",
-  "https://placehold.co/1200x800",
-]);
+export const GALLERY_IMAGES = [
+  "/assets/foto 1 galeri.webp",
+  "/assets/foto 2 galery.webp",
+  "/assets/foto 3 galery.webp",
+  "/assets/foto 4 galery.webp",
+  "/assets/foto 5 galery.webp",
+  "/assets/foto 6 galery.webp",
+  "/assets/foto 7 galery.webp",
+  "/assets/foto 8 galery.webp",
+  "/assets/foto 9 galery.webp",
+];
